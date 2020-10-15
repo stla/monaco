@@ -84,7 +84,7 @@ monaco <- function(
     contents <- suppressWarnings(readLines(contents))
   }
   if(is.null(language)){
-    mode <- "text"
+    language <- "plaintext"
   }
   if(is.null(fileName)){
     fileName <- "untitled"

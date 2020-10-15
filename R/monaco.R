@@ -44,9 +44,9 @@ monaco <- function(
   if(is.null(theme)){
     if(isAvailable()){
       dark <- getThemeInfo()[["dark"]]
-      theme <- ifelse(dark, "hc-black", "xx")
+      theme <- ifelse(dark, "Dark", "xx")
     }else{
-      theme <- "hc-black"
+      theme <- "Dark"
     }
   }else{
     if(!is.element(theme, getMonacoThemes())){
@@ -54,7 +54,7 @@ monaco <- function(
         "This theme is not available.",
         "Run `getMonacoThemes()` to get the list of available themes."
       )
-      theme <- "hc-black"
+      theme <- "Dark"
     }
   }
 
@@ -92,7 +92,7 @@ monaco <- function(
 
   # forward options using x
   x <- list(
-    contents = contents,
+    contents = as.list(contents),
     language = language,
     theme = theme,
     tabSize = tabSize,

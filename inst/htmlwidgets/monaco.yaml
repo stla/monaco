@@ -3,3 +3,7 @@ dependencies:
    version: 0.21.2
    src: htmlwidgets/monaco-editor
    script: monaco.min.js
+ - name: monacoWidget
+   version: 0.0.0
+   src: htmlwidgets/monacoWidget
+   script: monacoWidget.js

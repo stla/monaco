@@ -18,5 +18,5 @@ getMonacoLanguages <- function(){
 #'
 #' @export
 getMonacoThemes <- function(){
-  c("hc-black")
+  c("Dark", "vs-dark", "AllHallowsEve", "Merbivore", "VibrantInk")
 }

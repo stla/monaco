@@ -11,6 +11,9 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
 
+        if(x.theme !== "vs.dark") {
+          monaco.editor.defineTheme(x.theme, monacoWidget.themes[x.theme]);
+        }
         monaco.editor.setTheme(x.theme);
 
 				var editor = monaco.editor.create(el, {

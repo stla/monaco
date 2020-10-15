@@ -66,7 +66,7 @@ monaco <- function(
       contents <- context[["contents"]]
       if(is.null(language)){
         ext <- file_ext(context[["path"]])
-        mode <- languageFromExtension(ext)
+        language <- languageFromExtension(ext)
       }
       fileName <- basename(context[["path"]])
     }else{
@@ -94,6 +94,7 @@ monaco <- function(
   x <- list(
     contents = contents,
     language = language,
+    theme = theme,
     tabSize = tabSize,
     fileName = fileName
   )

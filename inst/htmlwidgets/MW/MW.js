@@ -1,5 +1,14 @@
-var monacoWidget = {
+var _MW = {
   modelValue: "",
+  prettifiable: [
+    "css",
+    "html",
+    "javascript",
+    "markdown",
+    "scss",
+    "typescript",
+    "yaml"
+  ],
   themes: {
     Dark: {
       base: "hc-black",
@@ -475,7 +484,8 @@ var monacoWidget = {
     return btoa(unescape(encodeURIComponent(str)));
   },
   prettify: function (code, parser, tabSize) {
-    var prettyCode = null, error = null;
+    var prettyCode = null,
+      error = null;
     try {
       prettyCode = prettier.format(code, {
         parser: parser,
@@ -483,11 +493,11 @@ var monacoWidget = {
         trailingComma: "none",
         tabWidth: tabSize
       });
-      editor.setValue(prettyCode); // non, faire ça dans prettifier action
     } catch (err) {
       error = err.message;
       // TODO: sweetalert - non, dans prettifier
     }
+    return { prettyCode: prettyCode, error: error };
   },
   // end of functions
   actions: {
@@ -496,7 +506,7 @@ var monacoWidget = {
         label = "Prettify";
       }
       var parser;
-      switch(language) {
+      switch (language) {
         case "css":
           parser = "css";
           break;
@@ -506,8 +516,17 @@ var monacoWidget = {
         case "javascript":
           parser = "babel";
           break;
+        case "markdown":
+          parser = "markdown";
+          break;
         case "scss":
           parser = "css";
+          break;
+        case "typescript":
+          parser = "typescript";
+          break;
+        case "yaml":
+          parser = "yaml";
           break;
       }
       return {
@@ -520,13 +539,18 @@ var monacoWidget = {
         run: function (ed) {
           var bookmark = false; //$("#bookmark").prop("checked");
           if (bookmark) {
-            monacoWidget.modelValue = ed.getValue();
+            _MW.modelValue = ed.getValue();
           }
-          var result = prettify(ed.getValue(), parser);
-          if(result.error === null){
+          var result = _MW.prettify(ed.getValue(), parser, tabSize);
+          if (result.error === null) {
             ed.setValue(result.prettyCode);
-          }else{
-            // sweetalert
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Something went wrong!",
+              html: "<pre>" + result.error + "</pre>",
+              width: "100%"
+            });
           }
           return null;
         }

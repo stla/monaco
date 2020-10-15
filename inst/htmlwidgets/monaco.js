@@ -12,7 +12,7 @@ HTMLWidgets.widget({
       renderValue: function(x) {
 
         if(x.theme !== "vs.dark") {
-          monaco.editor.defineTheme(x.theme, monacoWidget.themes[x.theme]);
+          monaco.editor.defineTheme(x.theme, _MW.themes[x.theme]);
         }
         monaco.editor.setTheme(x.theme);
 
@@ -22,6 +22,12 @@ HTMLWidgets.widget({
 					tabSize: x.tabSize,
           automaticLayout: true
 				});
+
+				if(_MW.prettifiable.indexOf(x.language) > -1) {
+          editor.addAction(
+            _MW.actions.prettifier(x.language, x.tabSize)
+          );
+				}
 
       },
 

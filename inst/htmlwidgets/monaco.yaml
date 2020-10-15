@@ -5,8 +5,9 @@ dependencies:
    script: monaco.min.js
  - name: monacoWidget
    version: 0.0.0
-   src: htmlwidgets/monacoWidget
-   script: monacoWidget.js
+   src: htmlwidgets/MW
+   script: MW.js
+   stylesheet: MW.css
  - name: prettier
    version: 2.1.2
    src: htmlwidgets/prettier

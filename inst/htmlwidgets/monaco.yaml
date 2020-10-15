@@ -7,3 +7,23 @@ dependencies:
    version: 0.0.0
    src: htmlwidgets/monacoWidget
    script: monacoWidget.js
+ - name: prettier
+   version: 2.1.2
+   src: htmlwidgets/prettier
+   script:
+    - standalone.js
+    - parser-babel.js
+    - parser-html.js
+    - parser-markdown.js
+    - parser-postcss.js
+    - parser-typescript.js
+    - parser-yaml.js
+ # - name: jQuery
+ #   version: 3.5.1
+ #   src: htmlwidgets/jQuery
+ #   script: jquery.min.js
+ - name: sweetalert2
+   version: 10.5.1
+   src: htmlwidgets/sweetalert2
+   script: sweetalert2.min.js
+   stylesheet: sweetalert2.min.css

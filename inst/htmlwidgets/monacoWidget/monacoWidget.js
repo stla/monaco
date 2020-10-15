@@ -1,4 +1,5 @@
 var monacoWidget = {
+  modelValue: "",
   themes: {
     Dark: {
       base: "hc-black",
@@ -467,5 +468,69 @@ var monacoWidget = {
         "editorGutter.background": "#19197040"
       }
     }
-  } // end of 'themes'
+  }, // end of 'themes'
+  // functions
+  utf8_to_base64: function (str) {
+    // https://stackoverflow.com/questions/30106476/using-javascripts-atob-to-decode-base64-doesnt-properly-decode-utf-8-strings
+    return btoa(unescape(encodeURIComponent(str)));
+  },
+  prettify: function (code, parser, tabSize) {
+    var prettyCode = null, error = null;
+    try {
+      prettyCode = prettier.format(code, {
+        parser: parser,
+        plugins: prettierPlugins,
+        trailingComma: "none",
+        tabWidth: tabSize
+      });
+      editor.setValue(prettyCode); // non, faire ça dans prettifier action
+    } catch (err) {
+      error = err.message;
+      // TODO: sweetalert - non, dans prettifier
+    }
+  },
+  // end of functions
+  actions: {
+    prettifier: function (language, tabSize, label) {
+      if (typeof label === "undefined") {
+        label = "Prettify";
+      }
+      var parser;
+      switch(language) {
+        case "css":
+          parser = "css";
+          break;
+        case "html":
+          parser = "html";
+          break;
+        case "javascript":
+          parser = "babel";
+          break;
+        case "scss":
+          parser = "css";
+          break;
+      }
+      return {
+        id: "prettifier",
+        label: label,
+        precondition: null,
+        keybindingContext: null,
+        contextMenuGroupId: "navigation",
+        contextMenuOrder: 1.5,
+        run: function (ed) {
+          var bookmark = false; //$("#bookmark").prop("checked");
+          if (bookmark) {
+            monacoWidget.modelValue = ed.getValue();
+          }
+          var result = prettify(ed.getValue(), parser);
+          if(result.error === null){
+            ed.setValue(result.prettyCode);
+          }else{
+            // sweetalert
+          }
+          return null;
+        }
+      };
+    }
+  } // end of 'actions'
 };

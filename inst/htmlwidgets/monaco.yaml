@@ -3,11 +3,6 @@ dependencies:
    version: 0.21.2
    src: htmlwidgets/monaco-editor
    script: monaco.min.js
- - name: monacoWidget
-   version: 0.0.0
-   src: htmlwidgets/MW
-   script: MW.js
-   stylesheet: MW.css
  - name: prettier
    version: 2.1.2
    src: htmlwidgets/prettier
@@ -37,3 +32,8 @@ dependencies:
    version: 12.0.0
    src: htmlwidgets/markdown-it
    script: markdown-it.min.js
+ - name: monacoWidget
+   version: 0.0.0
+   src: htmlwidgets/MW
+   script: MW.js
+   stylesheet: MW.css

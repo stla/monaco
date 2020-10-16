@@ -745,6 +745,24 @@ var _MW = {
           return null;
         }
       };
+    },
+    wordWrap: function () {
+      return {
+        id: "wordWrap",
+        label: "Wrap (80 characters)",
+        precondition: null,
+        keybindingContext: null,
+        contextMenuGroupId: "navigation",
+        contextMenuOrder: 1.5,
+        run: function (ed) {
+          var result = wordWrap(ed.getValue(), {
+            width: 80,
+            indent: ""
+          });
+          ed.setValue(result);
+          return null;
+        }
+      };
     }
   } // end of 'actions'
 };

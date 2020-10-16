@@ -44,6 +44,10 @@ dependencies:
    version: 9.2.5
    src: htmlwidgets/panzoom
    script: panzoom.min.js
+ - name: word-wrap
+   version: 1.2.3
+   src: htmlwidgets/word-wrap
+   script: word-wrap-bundle.js
  - name: monacoWidget
    version: 0.0.0
    src: htmlwidgets/MW

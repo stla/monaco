@@ -49,10 +49,11 @@ HTMLWidgets.widget({
             editor.addAction(
               _MW.actions.markdownit()
             );
+            editor.addAction(
+              _MW.actions.wordWrap()
+            );
           }
-				}
-
-				if(x.fileExtension === "svg") {
+				} else if(x.fileExtension === "svg") {
 				  $("#checkbox").show();
           editor.addAction(
             _MW.actions.prettifier("svg", x.tabSize)
@@ -63,6 +64,10 @@ HTMLWidgets.widget({
 				  editor.addAction(
 				    _MW.actions.svgScale()
 				  );
+				} else if(x.language === "plaintext") {
+          editor.addAction(
+            _MW.actions.wordWrap()
+          );
 				}
 
 				var model = editor.getModel();

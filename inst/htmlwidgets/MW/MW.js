@@ -533,6 +533,7 @@ var _MW = {
         contextMenuOrder: 1.5,
         run: function (ed) {
           _MW.modelValue = ed.getValue();
+          $("#fileName").css("font-style", "normal");
           return null;
         }
       };
@@ -547,7 +548,8 @@ var _MW = {
         contextMenuGroupId: "navigation",
         contextMenuOrder: 1.5,
         run: function (ed) {
-          ed.setValue(_MW.modelValue);
+          ed.setValue(_MW.modelValue); // also restore state
+          $("#fileName").css("font-style", "normal");
           return null;
         }
       };

@@ -48,6 +48,12 @@ HTMLWidgets.widget({
 				  // $(".monaco").css("top", "10px"); // or do a class and removeClass
 				}
 
+				var model = editor.getModel();
+				model.onDidChangeContent(function(event) {
+          $("#fileName").css("font-style", "italic");
+        });
+
+
       },
 
       resize: function (width, height) {

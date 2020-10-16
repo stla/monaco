@@ -682,6 +682,7 @@ var _MW = {
               closeClass: "icon-close",
               closeText: "&times;"
             });
+            panzoom(document.getElementById("modal"));
           } else {
             Swal.fire({
               icon: "error",

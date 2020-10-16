@@ -36,6 +36,10 @@ dependencies:
    version: 2.0.4
    src: htmlwidgets/svg-parser
    script: svg-parser-bundle.js
+ - name: panzoom
+   version: 9.2.5
+   src: htmlwidgets/panzoom
+   script: panzoom.min.js
  - name: monacoWidget
    version: 0.0.0
    src: htmlwidgets/MW

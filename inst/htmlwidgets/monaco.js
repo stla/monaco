@@ -11,6 +11,8 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
 
+        $("#fileName").text(x.fileName); // italic on change, etc
+
         if(x.theme !== "vs.dark") {
           monaco.editor.defineTheme(x.theme, _MW.themes[x.theme]);
         }
@@ -43,7 +45,7 @@ HTMLWidgets.widget({
             _MW.actions.prettifier(x.language, x.tabSize)
           );
 				} else {
-				  $(".monaco").css("top", "10px"); // or do a class and removeClass
+				  // $(".monaco").css("top", "10px"); // or do a class and removeClass
 				}
 
       },

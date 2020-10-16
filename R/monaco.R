@@ -114,7 +114,13 @@ monaco <- function(
 #' @noRd
 monaco_html <- function(id, style, class, ...){
   tagList(
-    tinyCheckbox("bookmark", "Always bookmark before prettifying"),
+    tags$div(
+      tinyCheckbox(
+        "checkbox", "bookmark", "Always bookmark before prettifying"
+      ),
+      tags$span(id = "fileName"),
+      tags$div(style = "clear: both;")
+    ),
     tags$div(id = id, class = class)
   )
 }

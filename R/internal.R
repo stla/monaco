@@ -336,8 +336,8 @@ binaryExtensions <- c(
 
 #' @importFrom htmltools tags
 #' @noRd
-tinyCheckbox <- function(id, label){
-  tags$div(id = "checkbox",
+tinyCheckbox <- function(ID, id, label){
+  tags$div(id = ID,
            class = "check-box-container",
            style = "display: none;",
            tags$input(id = id, type = "checkbox",

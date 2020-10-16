@@ -23,6 +23,16 @@ body {
   height: inherit !important;
 }
 
+#checkbox {
+  float: left;
+}
+
+#fileName {
+  float: right;
+  color: #fff;
+  text-decoration: underline;
+}
+
 .swal2-html-container pre {
   font-weight: bold;
   color: red;

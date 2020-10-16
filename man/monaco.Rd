@@ -23,8 +23,8 @@ contents are read from a file, the mode is guessed from the extension of
 the file; run \code{\link{getMonacoLanguages}} to get the list of
 available languages}
 
-\item{theme}{the theme of the editor; run \code{\link{getAceThemes}} to get
-the list of available themes}
+\item{theme}{the theme of the editor; run \code{\link{getMonacoThemes}} to
+get the list of available themes}
 
 \item{tabSize}{number of spaces for the indentation (usually \code{2} or
 \code{4}); if \code{NULL}, it is set to the one used in RStudio}
@@ -43,7 +43,7 @@ Open the Monaco editor.
 monaco()
 
 # opens a new JavaScript file:
-monaco(NULL, mode = "javascript")
+monaco(NULL, language = "javascript")
 
 # opens an existing file:
 monaco(system.file("exampleFiles", "JavaScript.js", package = "monaco"))

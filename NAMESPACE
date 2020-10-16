@@ -3,8 +3,6 @@
 export(getMonacoLanguages)
 export(getMonacoThemes)
 export(monaco)
-export(monacoOutput)
-export(renderMonaco)
 importFrom(htmltools,tagList)
 importFrom(htmltools,tags)
 importFrom(htmlwidgets,createWidget)

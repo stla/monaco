@@ -13,7 +13,7 @@ HTMLWidgets.widget({
 
         $("#fileName").text(x.fileName); // italic on change, etc
 
-        if(x.theme !== "vs.dark") {
+        if(x.theme !== "vs-dark" && x.theme !== "vs") {
           monaco.editor.defineTheme(x.theme, _MW.themes[x.theme]);
         }
         monaco.editor.setTheme(x.theme);

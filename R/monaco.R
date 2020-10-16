@@ -47,7 +47,7 @@ monaco <- function(
   if(is.null(theme)){
     if(isAvailable()){
       dark <- getThemeInfo()[["dark"]]
-      theme <- ifelse(dark, "Dark", "xx")
+      theme <- ifelse(dark, "Dark", "vs")
     }else{
       theme <- "Dark"
     }

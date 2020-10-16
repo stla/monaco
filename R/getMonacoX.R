@@ -14,9 +14,11 @@ getMonacoLanguages <- function(){
 }
 
 #' Monaco themes
-#' @description Get the list of available themes of the Monaco editor.
+#' @description Get the list of available themes of the Monaco editor. All
+#'   themes are dark, excepted \code{"vs"}.
 #'
 #' @export
 getMonacoThemes <- function(){
-  c("Dark", "vs-dark", "AllHallowsEve", "Merbivore", "VibrantInk")
+  c("vs", "vs-dark", "Dark", "AllHallowsEve", "Cobalt", "Merbivore",
+    "VibrantInk")
 }

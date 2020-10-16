@@ -49,5 +49,5 @@ monaco(NULL, mode = "javascript")
 monaco(system.file("exampleFiles", "JavaScript.js", package = "monaco"))
 
 # try the SVG viewer; you can zoom and pan the image:
-monaco(system.file("exampleFiles", "vscode.svg", package = "monaco"))
+monaco(system.file("exampleFiles", "react.svg", package = "monaco"))
 }

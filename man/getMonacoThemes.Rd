@@ -7,5 +7,6 @@
 getMonacoThemes()
 }
 \description{
-Get the list of available themes of the Monaco editor.
+Get the list of available themes of the Monaco editor. All
+  themes are dark, excepted \code{"vs"}.
 }

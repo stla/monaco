@@ -1,4 +1,5 @@
 var _MW = {
+  modelState: null,
   modelValue: "",
   prettifiable: [
     "css",
@@ -533,7 +534,9 @@ var _MW = {
         contextMenuOrder: 1.5,
         run: function (ed) {
           _MW.modelValue = ed.getValue();
+          _MW.modelState = ed.saveViewState();
           $("#fileName").css("font-style", "normal");
+          // also save state
           return null;
         }
       };
@@ -548,7 +551,9 @@ var _MW = {
         contextMenuGroupId: "navigation",
         contextMenuOrder: 1.5,
         run: function (ed) {
-          ed.setValue(_MW.modelValue); // also restore state
+          ed.setValue(_MW.modelValue);
+          ed.restoreViewState(_MW.modelState);
+          ed.focus();
           $("#fileName").css("font-style", "normal");
           return null;
         }

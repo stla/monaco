@@ -52,6 +52,7 @@ HTMLWidgets.widget({
 				model.onDidChangeContent(function(event) {
           $("#fileName").css("font-style", "italic");
         });
+        _MW.modelState = editor.saveViewState();
 
 
       },

@@ -20,6 +20,7 @@
 #' @importFrom htmlwidgets createWidget
 #' @importFrom rstudioapi getSourceEditorContext isAvailable getThemeInfo
 #' @importFrom tools file_ext
+#' @importFrom shiny isRunning
 #'
 #' @export
 #' @examples # in RStudio, `monaco()` opens the current file:
@@ -166,8 +167,9 @@ monaco <- function(
   )
 
   # create widget
-  elementId <-
-    ifelse(is.null(elementId), paste0("widget", randomString(15)), elementId)
+  if(!isRunning() && is.null(elementId)){
+    elementId <- paste0("MW", randomString(15))
+  }
   createWidget(
     name = "monaco",
     x,
@@ -200,34 +202,54 @@ monaco_html <- function(id, style, class, ...){
   )
 }
 
-#' Shiny bindings for monaco
+#' Shiny bindings for Monaco editor
 #'
-#' Output and render functions for using monaco within Shiny
+#' Output and render functions for using Monaco editors within Shiny
 #' applications and interactive Rmd documents.
 #'
 #' @param outputId output variable to read from
-#' @param width,height Must be a valid CSS unit (like \code{'100\%'},
-#'   \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
-#'   string and have \code{'px'} appended.
-#' @param expr An expression that generates a monaco
-#' @param env The environment in which to evaluate \code{expr}.
-#' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
-#'   is useful if you want to save an expression in a variable.
+#' @param width,height CSS measurements (like \code{"100\%"},
+#'   \code{"400px"}, \code{"auto"}) or a number, which will be coerced to a
+#'   string and have \code{"px"} appended
+#' @param expr an expression that creates a Monaco editor with
+#'   \code{\link{monaco}}
+#' @param env the environment in which to evaluate \code{expr}
+#' @param quoted logical, whether \code{expr} a quoted expression
 #'
 #' @name monaco-shiny
 #'
+#' @importFrom htmlwidgets shinyWidgetOutput shinyRenderWidget
 #' @export
+#'
+#' @examples library(monaco)
+#' library(shiny)
+#'
+#' ui <- fluidPage(
+#'   monacoOutput("ed", height = "400px")
+#' )
+#'
+#' server <- function(input, output){
+#'
+#'   output[["ed"]] <- renderMonaco({
+#'     monaco(
+#'       system.file("exampleFiles", "JavaScript.js", package = "monaco")
+#'     )
+#'   })
+#'
+#' }
+#'
+#' if(interactive()){
+#'   shinyApp(ui, server)
+#' }
 monacoOutput <- function(outputId, width = "100%", height = "400px") {
-  htmlwidgets::shinyWidgetOutput(outputId, "monaco", width, height, package = "monaco")
+  shinyWidgetOutput(outputId, "monaco", width, height, package = "monaco")
 }
 
 #' @rdname monaco-shiny
 #' @export
 renderMonaco <- function(expr, env = parent.frame(), quoted = FALSE) {
-  if (!quoted) {
+  if(!quoted) {
     expr <- substitute(expr)
   } # force quoted
-  suppressWarnings(
-    htmlwidgets::shinyRenderWidget(expr, monacoOutput, env, quoted = TRUE)
-  )
+  shinyRenderWidget(expr, monacoOutput, env, quoted = TRUE)
 }

@@ -46,8 +46,9 @@ span[id^=fileName] {
 }
 
 .modal {
-  max-width: 1000px;
+  max-width: 850px;
   background-color: #c32148;
+  overflow: visible;
 }
 
 .modal a.close-modal.icon-close {

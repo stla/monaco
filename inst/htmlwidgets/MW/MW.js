@@ -944,7 +944,7 @@ var _MW = {
               closeClass: "icon-close",
               closeText: "&times;"
             });
-            panzoom(document.getElementById("modal"));
+            panzoom(document.querySelector(slctr));
           } else {
             Swal.fire({
               icon: "error",

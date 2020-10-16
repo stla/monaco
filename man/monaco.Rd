@@ -68,38 +68,40 @@ ed2 <- monaco(
 
 if(interactive()){
   browsable(
-    tagList(
-      tags$style(HTML(".monaco {position: fixed; width: 48vw;}")),
-      div(
-        div(ed1, style="position:fixed; left:1vw; width: 48vw;"),
-        div(ed2, style="position:fixed; left:51vw; width: 48vw;")
-      )
+    div(
+      div(ed1, style="position: fixed; left: 1vw; right: 51vw;"),
+      div(ed2, style="position: fixed; left: 51vw; right: 1vw;")
     )
   )
 }
+
 
 # stacks two editors:
 library(monaco)
 library(htmltools)
 
 ed1 <- monaco(
-  system.file("exampleFiles", "JavaScript.js", package = "monaco")
+  system.file("exampleFiles", "JavaScript.js", package = "monaco"),
+  height = "calc(50vh - 40px)"
 )
 ed2 <- monaco(
-  system.file("exampleFiles", "react.svg", package = "monaco")
+  system.file("exampleFiles", "react.svg", package = "monaco"),
+  height = "calc(50vh - 40px)"
 )
 
 if(interactive()){
   browsable(
     tagList(
-      tags$style(
-        HTML(
-          ".monaco {position: fixed; height: calc(50vh - 50px); width: 98vw;}"
-        )
-      ),
+      tags$style(HTML(
+        ".editor {",
+        "  position: fixed;",
+        "  left: 1vw;",
+        "  width: 98vw;",
+        "}"
+      )),
       div(
-        div(ed1, style="position:fixed; left:1vw; width: 98vw;"),
-        div(ed2, style="position:fixed; left:1vw; top: 52vh; width: 98vw;")
+        div(ed1, class = "editor", style = "bottom: calc(50vh + 5px);"),
+        div(ed2, class = "editor", style = "top: calc(50vh + 5px);")
       )
     )
   )

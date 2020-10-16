@@ -640,7 +640,11 @@ var _MW = {
         run: function (ed) {
           var result = _MW.markdownit(ed.getValue());
           if(result.error === null) {
-            $("#modal").html(result.html).modal();
+            $("#modal").html(result.html).modal({
+              fadeDuration: 500,
+              closeClass: "icon-close",
+              closeText: "&times;"
+            });
           } else {
             Swal.fire({
               icon: "error",

@@ -5,13 +5,16 @@ HTMLWidgets.widget({
   type: "output",
 
   factory: function(el, width, height) {
-    // TODO: define shared variables for this instance
+
+    var id = $(el).attr("id");
+    var slctr_fileName = "#fileName" + id;
+    var slctr_modal = "#modal" + id;
 
     return {
 
       renderValue: function(x) {
 
-        $("#fileName").text(x.fileName); // italic on change, etc
+        $(slctr_fileName).text(x.fileName);
 
         if(x.theme !== "vs-dark" && x.theme !== "vs") {
           monaco.editor.defineTheme(x.theme, _MW.themes[x.theme]);
@@ -29,37 +32,37 @@ HTMLWidgets.widget({
         _MW.modelValue = editor.getValue();
 
         editor.addAction(
-            _MW.actions.save(x.fileName)
+          _MW.actions.save(x.fileName)
         );
 
         editor.addAction(
-            _MW.actions.bookmark()
+          _MW.actions.bookmark(slctr_fileName)
         );
 
         editor.addAction(
-            _MW.actions.restore()
+          _MW.actions.restore(slctr_fileName)
         );
 
 				if(_MW.prettifiable.indexOf(x.language) > -1) {
-				  $("#checkbox").show();
+				  $("#checkbox" + id).show();
           editor.addAction(
             _MW.actions.prettifier(x.language, x.tabSize)
           );
           if(x.language === "markdown") {
             editor.addAction(
-              _MW.actions.markdownit()
+              _MW.actions.markdownit(slctr_modal)
             );
             editor.addAction(
               _MW.actions.wordWrap()
             );
           }
 				} else if(x.fileExtension === "svg") {
-				  $("#checkbox").show();
+				  $("#checkbox" + id).show();
           editor.addAction(
             _MW.actions.prettifier("svg", x.tabSize)
           );
 				  editor.addAction(
-				    _MW.actions.svgViewer()
+				    _MW.actions.svgViewer(slctr_modal)
 				  );
 				  editor.addAction(
 				    _MW.actions.svgScale()
@@ -76,7 +79,7 @@ HTMLWidgets.widget({
           indentSize: x.tabSize
         });
 				model.onDidChangeContent(function(event) {
-          $("#fileName").css("font-style", "italic");
+          $(slctr_fileName).css("font-style", "italic");
         });
         _MW.modelState = editor.saveViewState();
 

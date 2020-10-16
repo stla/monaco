@@ -32,6 +32,30 @@
 #'
 #' # try the SVG viewer; you can zoom and pan the image:
 #' monaco(system.file("exampleFiles", "react.svg", package = "monaco"))
+#'
+#'
+#' # opens two editors side-by-side:
+#' library(monaco)
+#' library(htmltools)
+#'
+#' ed1 <- monaco(
+#'   system.file("exampleFiles", "JavaScript.js", package = "monaco")
+#' )
+#' ed2 <- monaco(
+#'   system.file("exampleFiles", "react.svg", package = "monaco")
+#' )
+#'
+#' if(interactive()){
+#'   browsable(
+#'     tagList(
+#'       tags$style(HTML(".monaco {position: fixed; width: 48vw;}")),
+#'       div(
+#'         div(ed1, style="position:fixed; left:1vw; width: 48vw;"),
+#'         div(ed2, style="position:fixed; left:51vw; width: 48vw;")
+#'       )
+#'     )
+#'   )
+#' }
 monaco <- function(
   contents, language = NULL, theme = NULL, tabSize = NULL,
   width = NULL, height = NULL, elementId = NULL
@@ -111,6 +135,8 @@ monaco <- function(
   )
 
   # create widget
+  elementId <-
+    ifelse(is.null(elementId), paste0("widget", randomString(15)), elementId)
   createWidget(
     name = "monaco",
     x,
@@ -127,12 +153,13 @@ monaco_html <- function(id, style, class, ...){
   tagList(
     tags$div(
       tags$div(
-        id = "modal", class = "modal"
+        id = paste0("modal", id), class = "modal"
       ),
       tinyCheckbox(
-        "checkbox", "bookmark", "Always bookmark before prettifying"
+        paste0("checkbox", id), paste0("bookmark", id),
+        "Always bookmark before prettifying"
       ),
-      tags$span(id = "fileName"),
+      tags$span(id = paste0("fileName", id)),
       tags$div(style = "clear: both;")
     ),
     tags$div(id = id, class = class)

@@ -24,11 +24,11 @@ body {
   height: inherit !important;
 }
 
-#checkbox {
+div[id^=checkbox] {
   float: left;
 }
 
-#fileName {
+span[id^=fileName] {
   float: right;
   color: #fff;
   text-decoration: underline;

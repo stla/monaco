@@ -798,7 +798,7 @@ var _MW = {
         }
       };
     },
-    bookmark: function () {
+    bookmark: function (slctr) {
       return {
         id: "bookmark",
         label: "Bookmark",
@@ -810,12 +810,12 @@ var _MW = {
         run: function (ed) {
           _MW.modelValue = ed.getValue();
           _MW.modelState = ed.saveViewState();
-          $("#fileName").css("font-style", "normal");
+          $(slctr).css("font-style", "normal");
           return null;
         }
       };
     },
-    restore: function () {
+    restore: function (slctr) {
       return {
         id: "restore",
         label: "Restore",
@@ -828,7 +828,7 @@ var _MW = {
           ed.setValue(_MW.modelValue);
           ed.restoreViewState(_MW.modelState);
           ed.focus();
-          $("#fileName").css("font-style", "normal");
+          $(slctr).css("font-style", "normal");
           return null;
         }
       };
@@ -892,7 +892,7 @@ var _MW = {
         }
       };
     },
-    markdownit: function () {
+    markdownit: function (slctr) {
       return {
         id: "markdownit",
         label: "View HTML",
@@ -903,7 +903,7 @@ var _MW = {
         run: function (ed) {
           var result = _MW.markdownit(ed.getValue());
           if (result.error === null) {
-            $("#modal").html(result.html).modal({
+            $(slctr).html(result.html).modal({
               fadeDuration: 500,
               closeClass: "icon-close",
               closeText: "&times;"
@@ -920,7 +920,7 @@ var _MW = {
         }
       };
     },
-    svgViewer: function () {
+    svgViewer: function (slctr) {
       return {
         id: "svgViewer",
         label: "View SVG image",
@@ -939,7 +939,7 @@ var _MW = {
             });
           }
           if (error === null) {
-            $("#modal").html(svg).modal({
+            $(slctr).html(svg).modal({
               fadeDuration: 500,
               closeClass: "icon-close",
               closeText: "&times;"

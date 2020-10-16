@@ -406,3 +406,10 @@ tinyCheckbox <- function(ID, id, label){
                       class = "check-box-label")
   )
 }
+
+randomString <- function(size){
+  paste0(
+    sample(c(letters, LETTERS, 0:9), size, replace = TRUE),
+    collapse = ""
+  )
+}

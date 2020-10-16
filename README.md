@@ -1,6 +1,6 @@
 # monaco
 
-Yet another editor in RStudio. 
+Yet another second editor in RStudio. 
 
 ### Related projects
 

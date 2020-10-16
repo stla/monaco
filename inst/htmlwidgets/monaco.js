@@ -22,6 +22,7 @@ HTMLWidgets.widget({
 					value: x.contents.join("\n"),
 					language: x.language,
 					tabSize: x.tabSize,
+					indentSize: x.tabSize,
           automaticLayout: true
 				});
 
@@ -49,11 +50,10 @@ HTMLWidgets.widget({
               _MW.actions.markdownit()
             );
           }
-				} else {
-				  // $(".monaco").css("top", "10px"); // or do a class and removeClass
 				}
 
 				if(x.fileExtension === "svg") {
+				  $("#checkbox").show();
           editor.addAction(
             _MW.actions.prettifier("svg", x.tabSize)
           );
@@ -66,6 +66,10 @@ HTMLWidgets.widget({
 				}
 
 				var model = editor.getModel();
+        model.updateOptions({
+          tabSize: x.tabSize,
+          indentSize: x.tabSize
+        });
 				model.onDidChangeContent(function(event) {
           $("#fileName").css("font-style", "italic");
         });

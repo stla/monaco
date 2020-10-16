@@ -46,5 +46,8 @@ monaco()
 monaco(NULL, mode = "javascript")
 
 # opens an existing file:
-monaco(system.file("htmlwidgets", "monaco.js", package = "monaco"))
+monaco(system.file("exampleFiles", "JavaScript.js", package = "monaco"))
+
+# try the SVG viewer; you can zoom and pan the image:
+monaco(system.file("exampleFiles", "vscode.svg", package = "monaco"))
 }

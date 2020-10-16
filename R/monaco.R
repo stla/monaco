@@ -28,7 +28,10 @@
 #' monaco(NULL, mode = "javascript")
 #'
 #' # opens an existing file:
-#' monaco(system.file("htmlwidgets", "monaco.js", package = "monaco"))
+#' monaco(system.file("exampleFiles", "JavaScript.js", package = "monaco"))
+#'
+#' # try the SVG viewer; you can zoom and pan the image:
+#' monaco(system.file("exampleFiles", "react.svg", package = "monaco"))
 monaco <- function(
   contents, language = NULL, theme = NULL, tabSize = NULL,
   width = NULL, height = NULL, elementId = NULL
@@ -91,6 +94,9 @@ monaco <- function(
   if(is.null(fileName)){
     ext <- extensionFromLanguage(language)
     fileName <- paste0("untitled.", ext)
+  }
+  if(is.null(tabSize)){
+    tabSize <- getTabSize()
   }
 
   # forward options using x

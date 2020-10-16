@@ -11,6 +11,7 @@
 #'   get the list of available themes
 #' @param tabSize number of spaces for the indentation (usually \code{2} or
 #'   \code{4}); if \code{NULL}, it is set to the one used in RStudio
+#' @param fontSize font size in pixels
 #' @param width,height dimensions; the default values are nice for usage in
 #'   the RStudio viewer pane
 #' @param elementId a HTML id for the container; this is useless for common
@@ -84,7 +85,7 @@
 #'   )
 #' }
 monaco <- function(
-  contents, language = NULL, theme = NULL, tabSize = NULL,
+  contents, language = NULL, theme = NULL, tabSize = NULL, fontSize = 14,
   width = NULL, height = NULL, elementId = NULL
 ) {
 
@@ -157,6 +158,7 @@ monaco <- function(
     language = language,
     theme = theme,
     tabSize = tabSize,
+    fontSize = fontSize,
     fileName = fileName,
     fileExtension = ext
   )

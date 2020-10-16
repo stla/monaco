@@ -26,7 +26,9 @@ HTMLWidgets.widget({
 					language: x.language,
 					tabSize: x.tabSize,
 					indentSize: x.tabSize,
-          automaticLayout: true
+          automaticLayout: true,
+          fontSize: x.fontSize,
+          fontFamily: "Ubuntu Mono"
 				});
 
         _MW.modelValue = editor.getValue();

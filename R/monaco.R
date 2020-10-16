@@ -110,20 +110,14 @@ monaco <- function(
   )
 }
 
-# #' @import htmltools
-# monaco_html <- function(id, style, class, ...){
-#   tagList(
-#     tags$div(id = id, class = class),
-#     tags$script(HTML('var require = {paths: {vs: "monaco-editor/min/vs"}};')),
-#     htmlDependency(
-#       "empty",
-#       version = "0.0.0",
-#       src = "htmlwidgets",
-#       package = "monaco"
-#     ),
-#     includeScript(system.file("htmlwidgets", "monaco-editor", "loader.js", package = "monaco"))
-#   )
-# }
+#' @importFrom htmltools tagList tags
+#' @noRd
+monaco_html <- function(id, style, class, ...){
+  tagList(
+    tinyCheckbox("bookmark", "Always bookmark before prettifying"),
+    tags$div(id = id, class = class)
+  )
+}
 
 #' Shiny bindings for monaco
 #'

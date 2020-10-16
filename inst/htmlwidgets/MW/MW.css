@@ -1,3 +1,28 @@
+html, body {
+  margin: 0 !important;
+}
+
+body {
+  background-color: #000;
+  padding: 15px !important;
+}
+
+.monaco {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 50px) !important;
+}
+
+.monaco-editor {
+  border: 1px solid silver;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: inherit !important;
+}
+
 .swal2-html-container pre {
   font-weight: bold;
   color: red;

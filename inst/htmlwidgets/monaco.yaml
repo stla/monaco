@@ -19,10 +19,10 @@ dependencies:
     - parser-postcss.js
     - parser-typescript.js
     - parser-yaml.js
- # - name: jQuery
- #   version: 3.5.1
- #   src: htmlwidgets/jQuery
- #   script: jquery.min.js
+ - name: jQuery
+   version: 3.5.1
+   src: htmlwidgets/jQuery
+   script: jquery.min.js
  - name: sweetalert2
    version: 10.5.1
    src: htmlwidgets/sweetalert2

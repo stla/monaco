@@ -14,7 +14,7 @@ dependencies:
     - parser-postcss.js
     - parser-typescript.js
     - parser-yaml.js
- - name: jQuery
+ - name: jquery
    version: 3.5.1
    src: htmlwidgets/jQuery
    script: jquery.min.js

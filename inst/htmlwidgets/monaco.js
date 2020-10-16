@@ -6,6 +6,12 @@ HTMLWidgets.widget({
 
   factory: function(el, width, height) {
 
+    if(HTMLWidgets.shinyMode) {
+      $(".monacoWidget").addClass("mWidget");
+    } else {
+      $("body").addClass("mWidgetBody");
+    }
+
     var id = $(el).attr("id");
     var slctr_fileName = "#fileName" + id;
     var slctr_modal = "#modal" + id;

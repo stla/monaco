@@ -179,48 +179,53 @@ monaco <- function(
 #' @importFrom htmltools tagList tags
 #' @noRd
 monaco_html <- function(id, style, class, ...){
-  tagList(
-    tags$div(
+  tags$div(
+    class = "monacoWidget",
+    tagList(
       tags$div(
-        id = paste0("modal", id), class = "modal"
+        tags$div(
+          id = paste0("modal", id), class = "modal"
+        ),
+        tinyCheckbox(
+          paste0("checkbox", id), paste0("bookmark", id),
+          "Always bookmark before prettifying"
+        ),
+        tags$span(id = paste0("fileName", id)),
+        tags$div(style = "clear: both;")
       ),
-      tinyCheckbox(
-        paste0("checkbox", id), paste0("bookmark", id),
-        "Always bookmark before prettifying"
-      ),
-      tags$span(id = paste0("fileName", id)),
-      tags$div(style = "clear: both;")
-    ),
-    tags$div(id = id, class = class)
+      tags$div(id = id, class = class, style = style)
+    )
   )
 }
 
-#' #' Shiny bindings for monaco
-#' #'
-#' #' Output and render functions for using monaco within Shiny
-#' #' applications and interactive Rmd documents.
-#' #'
-#' #' @param outputId output variable to read from
-#' #' @param width,height Must be a valid CSS unit (like \code{'100\%'},
-#' #'   \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
-#' #'   string and have \code{'px'} appended.
-#' #' @param expr An expression that generates a monaco
-#' #' @param env The environment in which to evaluate \code{expr}.
-#' #' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
-#' #'   is useful if you want to save an expression in a variable.
-#' #'
-#' #' @name monaco-shiny
-#' #'
-#' #' @export
-#' monacoOutput <- function(outputId, width = "100%", height = "400px") {
-#'   htmlwidgets::shinyWidgetOutput(outputId, "monaco", width, height, package = "monaco")
-#' }
+#' Shiny bindings for monaco
 #'
-#' #' @rdname monaco-shiny
-#' #' @export
-#' renderMonaco <- function(expr, env = parent.frame(), quoted = FALSE) {
-#'   if (!quoted) {
-#'     expr <- substitute(expr)
-#'   } # force quoted
-#'   htmlwidgets::shinyRenderWidget(expr, monacoOutput, env, quoted = TRUE)
-#' }
+#' Output and render functions for using monaco within Shiny
+#' applications and interactive Rmd documents.
+#'
+#' @param outputId output variable to read from
+#' @param width,height Must be a valid CSS unit (like \code{'100\%'},
+#'   \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
+#'   string and have \code{'px'} appended.
+#' @param expr An expression that generates a monaco
+#' @param env The environment in which to evaluate \code{expr}.
+#' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
+#'   is useful if you want to save an expression in a variable.
+#'
+#' @name monaco-shiny
+#'
+#' @export
+monacoOutput <- function(outputId, width = "100%", height = "400px") {
+  htmlwidgets::shinyWidgetOutput(outputId, "monaco", width, height, package = "monaco")
+}
+
+#' @rdname monaco-shiny
+#' @export
+renderMonaco <- function(expr, env = parent.frame(), quoted = FALSE) {
+  if (!quoted) {
+    expr <- substitute(expr)
+  } # force quoted
+  suppressWarnings(
+    htmlwidgets::shinyRenderWidget(expr, monacoOutput, env, quoted = TRUE)
+  )
+}

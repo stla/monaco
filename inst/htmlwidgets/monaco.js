@@ -54,8 +54,14 @@ HTMLWidgets.widget({
 				}
 
 				if(x.fileExtension === "svg") {
+          editor.addAction(
+            _MW.actions.prettifier("svg", x.tabSize)
+          );
 				  editor.addAction(
 				    _MW.actions.svgViewer()
+				  );
+				  editor.addAction(
+				    _MW.actions.svgScale()
 				  );
 				}
 

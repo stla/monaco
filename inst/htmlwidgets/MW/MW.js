@@ -595,6 +595,9 @@ var _MW = {
         case "scss":
           parser = "css";
           break;
+        case "svg":
+          parser = "html";
+          break;
         case "typescript":
           parser = "typescript";
           break;
@@ -672,17 +675,65 @@ var _MW = {
           try {
             var json = SVGparse.parse(svg);
           } catch (err) {
-            error = err.message.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+            error = err.message.replace(/[\u00A0-\u9999<>\&]/gim, function (i) {
               return "&#" + i.charCodeAt(0) + ";";
             });
           }
-          if(error === null) {
+          if (error === null) {
             $("#modal").html(svg).modal({
               fadeDuration: 500,
               closeClass: "icon-close",
               closeText: "&times;"
             });
             panzoom(document.getElementById("modal"));
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Something went wrong!",
+              html: "<pre>" + error + "</pre>",
+              width: "100%"
+            });
+          }
+          return null;
+        }
+      };
+    },
+    svgScale: function () {
+      return {
+        id: "svgScale",
+        label: "Scale that SVG",
+        precondition: null,
+        keybindingContext: null,
+        contextMenuGroupId: "navigation",
+        contextMenuOrder: 1.5,
+        run: function (ed) {
+          var svg = ed.getValue();
+          var error = null;
+          try {
+            var json = SVGparse.parse(svg);
+          } catch (err) {
+            error = err.message.replace(/[\u00A0-\u9999<>\&]/gim, function (i) {
+              return "&#" + i.charCodeAt(0) + ";";
+            });
+          }
+          if (error === null) {
+            (async () => {
+              const { value: factor } = await Swal.fire({
+                title: "Scaling factor?",
+                icon: "question",
+                input: "range",
+                inputLabel: "Check the image after scaling!",
+                inputAttributes: {
+                  min: 0.1,
+                  max: 10,
+                  step: 0.1
+                },
+                inputValue: 1
+              });
+              scaleSVG(svg, { scale: factor }).then(function (scaledSVG) {
+                ed.setValue(scaledSVG);
+              });
+            })();
           } else {
             Swal.fire({
               icon: "error",

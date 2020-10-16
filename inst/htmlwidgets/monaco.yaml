@@ -36,6 +36,10 @@ dependencies:
    version: 2.0.4
    src: htmlwidgets/svg-parser
    script: svg-parser-bundle.js
+ - name: scale-that-svg
+   version: 1.0.5
+   src: htmlwidgets/scale-that-svg
+   script: scale-that-svg-bundle.js
  - name: panzoom
    version: 9.2.5
    src: htmlwidgets/panzoom

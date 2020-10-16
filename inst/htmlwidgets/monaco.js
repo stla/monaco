@@ -53,6 +53,12 @@ HTMLWidgets.widget({
 				  // $(".monaco").css("top", "10px"); // or do a class and removeClass
 				}
 
+				if(x.fileExtension === "svg") {
+				  editor.addAction(
+				    _MW.actions.svgViewer()
+				  );
+				}
+
 				var model = editor.getModel();
 				model.onDidChangeContent(function(event) {
           $("#fileName").css("font-style", "italic");

@@ -32,6 +32,10 @@ dependencies:
    version: 12.0.0
    src: htmlwidgets/markdown-it
    script: markdown-it.min.js
+ - name: svg-parser
+   version: 2.0.4
+   src: htmlwidgets/svg-parser
+   script: svg-parser-bundle.js
  - name: monacoWidget
    version: 0.0.0
    src: htmlwidgets/MW

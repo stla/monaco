@@ -73,21 +73,24 @@ monaco <- function(
       contents <- ""
     }
   }else if(!is.null(contents) && file.exists(contents)){
-    ext <- file_ext(contents)
-    if(tolower(ext) %in% binaryExtensions){
+    ext <- tolower(file_ext(contents))
+    if(ext %in% binaryExtensions){
       stop("Cannot open this type of files.")
     }
+    fileName <- basename(contents)
     if(is.null(language)){
       language <- languageFromExtension(ext)
-      fileName <- basename(contents)
     }
     contents <- suppressWarnings(readLines(contents))
   }
-  if(is.null(language)){
+  if(ext == "svg"){
+    language <- "xml"
+  }else if(is.null(language)){
     language <- "plaintext"
   }
   if(is.null(fileName)){
-    fileName <- paste0("untitled.", extensionFromLanguage(language))
+    ext <- extensionFromLanguage(language)
+    fileName <- paste0("untitled.", ext)
   }
 
   # forward options using x
@@ -96,7 +99,8 @@ monaco <- function(
     language = language,
     theme = theme,
     tabSize = tabSize,
-    fileName = fileName
+    fileName = fileName,
+    fileExtension = ext
   )
 
   # create widget

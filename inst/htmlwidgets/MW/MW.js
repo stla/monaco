@@ -499,8 +499,9 @@ var _MW = {
     }
     return { prettyCode: prettyCode, error: error };
   },
-  markdownit: function(code) {
-    var html = null, error = null;
+  markdownit: function (code) {
+    var html = null,
+      error = null;
     try {
       var md = window.markdownit({
         html: true,
@@ -508,12 +509,12 @@ var _MW = {
         typographer: true
       });
       html = md.render(code);
-    } catch(err) {
-      error = err.message.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+    } catch (err) {
+      error = err.message.replace(/[\u00A0-\u9999<>\&]/gim, function (i) {
         return "&#" + i.charCodeAt(0) + ";";
       });
     }
-    return {html: html, error: error};
+    return { html: html, error: error };
   },
   // end of functions
   actions: {
@@ -639,7 +640,7 @@ var _MW = {
         contextMenuOrder: 1.5,
         run: function (ed) {
           var result = _MW.markdownit(ed.getValue());
-          if(result.error === null) {
+          if (result.error === null) {
             $("#modal").html(result.html).modal({
               fadeDuration: 500,
               closeClass: "icon-close",
@@ -650,6 +651,42 @@ var _MW = {
               icon: "error",
               title: "Something went wrong!",
               html: "<pre>" + result.error + "</pre>",
+              width: "100%"
+            });
+          }
+          return null;
+        }
+      };
+    },
+    svgViewer: function () {
+      return {
+        id: "svgViewer",
+        label: "View SVG image",
+        precondition: null,
+        keybindingContext: null,
+        contextMenuGroupId: "navigation",
+        contextMenuOrder: 1.5,
+        run: function (ed) {
+          var svg = ed.getValue();
+          var error = null;
+          try {
+            var json = SVGparse.parse(svg);
+          } catch (err) {
+            error = err.message.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+              return "&#" + i.charCodeAt(0) + ";";
+            });
+          }
+          if(error === null) {
+            $("#modal").html(svg).modal({
+              fadeDuration: 500,
+              closeClass: "icon-close",
+              closeText: "&times;"
+            });
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Something went wrong!",
+              html: "<pre>" + error + "</pre>",
               width: "100%"
             });
           }

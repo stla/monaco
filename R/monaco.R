@@ -115,6 +115,9 @@ monaco <- function(
 monaco_html <- function(id, style, class, ...){
   tagList(
     tags$div(
+      tags$div(
+        id = "modal", class = "modal"
+      ),
       tinyCheckbox(
         "checkbox", "bookmark", "Always bookmark before prettifying"
       ),

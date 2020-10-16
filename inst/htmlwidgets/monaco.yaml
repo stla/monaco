@@ -23,8 +23,17 @@ dependencies:
    version: 3.5.1
    src: htmlwidgets/jQuery
    script: jquery.min.js
+ - name: jQueryModal
+   version: 0.9.2
+   src: htmlwidgets/jQueryModal
+   script: jquery.modal.min.js
+   stylesheet: jquery.modal.min.css
  - name: sweetalert2
    version: 10.5.1
    src: htmlwidgets/sweetalert2
    script: sweetalert2.min.js
    stylesheet: sweetalert2.min.css
+ - name: markdown-it
+   version: 12.0.0
+   src: htmlwidgets/markdown-it
+   script: markdown-it.min.js

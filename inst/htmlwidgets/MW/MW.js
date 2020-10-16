@@ -499,6 +499,22 @@ var _MW = {
     }
     return { prettyCode: prettyCode, error: error };
   },
+  markdownit: function(code) {
+    var html = null, error = null;
+    try {
+      var md = window.markdownit({
+        html: true,
+        linkify: true,
+        typographer: true
+      });
+      html = md.render(code);
+    } catch(err) {
+      error = err.message.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+        return "&#" + i.charCodeAt(0) + ";";
+      });
+    }
+    return {html: html, error: error};
+  },
   // end of functions
   actions: {
     save: function (fileName) {
@@ -601,6 +617,30 @@ var _MW = {
           var result = _MW.prettify(ed.getValue(), parser, tabSize);
           if (result.error === null) {
             ed.setValue(result.prettyCode);
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Something went wrong!",
+              html: "<pre>" + result.error + "</pre>",
+              width: "100%"
+            });
+          }
+          return null;
+        }
+      };
+    },
+    markdownit: function () {
+      return {
+        id: "markdownit",
+        label: "View HTML",
+        precondition: null,
+        keybindingContext: null,
+        contextMenuGroupId: "navigation",
+        contextMenuOrder: 1.5,
+        run: function (ed) {
+          var result = _MW.markdownit(ed.getValue());
+          if(result.error === null) {
+            $("#modal").html(result.html).modal();
           } else {
             Swal.fire({
               icon: "error",

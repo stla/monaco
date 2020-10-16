@@ -44,6 +44,11 @@ HTMLWidgets.widget({
           editor.addAction(
             _MW.actions.prettifier(x.language, x.tabSize)
           );
+          if(x.language === "markdown") {
+            editor.addAction(
+              _MW.actions.markdownit()
+            );
+          }
 				} else {
 				  // $(".monaco").css("top", "10px"); // or do a class and removeClass
 				}

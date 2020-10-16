@@ -4,6 +4,7 @@ html, body {
 
 body {
   background-color: #000;
+  overflow: hidden !important;
   padding: 15px !important;
 }
 

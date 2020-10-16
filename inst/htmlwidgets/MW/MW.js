@@ -496,7 +496,6 @@ var _MW = {
       });
     } catch (err) {
       error = err.message;
-      // TODO: sweetalert - non, dans prettifier
     }
     return { prettyCode: prettyCode, error: error };
   },
@@ -536,7 +535,6 @@ var _MW = {
           _MW.modelValue = ed.getValue();
           _MW.modelState = ed.saveViewState();
           $("#fileName").css("font-style", "normal");
-          // also save state
           return null;
         }
       };
@@ -595,9 +593,10 @@ var _MW = {
         contextMenuGroupId: "navigation",
         contextMenuOrder: 1.5,
         run: function (ed) {
-          var bookmark = false; //$("#bookmark").prop("checked");
+          var bookmark = $("#bookmark").prop("checked");
           if (bookmark) {
             _MW.modelValue = ed.getValue();
+            _MW.modelState = ed.saveViewState();
           }
           var result = _MW.prettify(ed.getValue(), parser, tabSize);
           if (result.error === null) {

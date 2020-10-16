@@ -87,7 +87,7 @@ monaco <- function(
     language <- "plaintext"
   }
   if(is.null(fileName)){
-    fileName <- "untitled"
+    fileName <- paste0("untitled.", extensionFromLanguage(language))
   }
 
   # forward options using x

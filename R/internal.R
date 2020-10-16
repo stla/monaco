@@ -67,6 +67,62 @@ languageFromExtension <- function(ext){
   )
 }
 
+extensionFromLanguage <- function(language){
+  switch(
+    language,
+    abap = "abap",
+    bat = "bat",
+    c = "c",
+    cpp = "c++",
+    clojure = "clj",
+    apex = "cls",
+    coffeescript = "coffee",
+    csharp = "cs",
+    css = "css",
+    dockerfile = "dockerfile",
+    fsharp = "fs",
+    graphql = "graphql",
+    handlebars = "handlebars",
+    html = "html",
+    ini = "ini",
+    java = "java",
+    julia = "jl",
+    javascript = "js",
+    json = "json",
+    kotlin = "kt",
+    less = "less",
+    lua = "lua",
+    `objective-c` = "m",
+    markdown = "md",
+    mysql = "mysql",
+    pascal = "pas",
+    pgsql = "pgsql",
+    php = "php",
+    perl = "pl",
+    powershell = "ps1",
+    pug = "pug",
+    python = "py",
+    r = "r",
+    razor = "razor",
+    rust = "rs",
+    restructuredtext = "rst",
+    ruby = "ru",
+    scala = "scala",
+    scheme = "scm",
+    scss = "scss",
+    shell = "sh",
+    sql = "sql",
+    swift = "swift",
+    tcl = "tcl",
+    typescript = "ts",
+    twig = "twig",
+    plaintext = "txt",
+    vb = "vb",
+    xml = "xml",
+    yaml = "yaml"
+  )
+}
+
 #' @importFrom rstudioapi hasFun readRStudioPreference
 #' @noRd
 getTabSize <- function(){

@@ -56,6 +56,33 @@
 #'     )
 #'   )
 #' }
+#'
+#' # stacks two editors:
+#' library(monaco)
+#' library(htmltools)
+#'
+#' ed1 <- monaco(
+#'   system.file("exampleFiles", "JavaScript.js", package = "monaco")
+#' )
+#' ed2 <- monaco(
+#'   system.file("exampleFiles", "react.svg", package = "monaco")
+#' )
+#'
+#' if(interactive()){
+#'   browsable(
+#'     tagList(
+#'       tags$style(
+#'         HTML(
+#'           ".monaco {position: fixed; height: calc(50vh - 50px); width: 98vw;}"
+#'         )
+#'       ),
+#'       div(
+#'         div(ed1, style="position:fixed; left:1vw; width: 98vw;"),
+#'         div(ed2, style="position:fixed; left:1vw; top: 52vh; width: 98vw;")
+#'       )
+#'     )
+#'   )
+#' }
 monaco <- function(
   contents, language = NULL, theme = NULL, tabSize = NULL,
   width = NULL, height = NULL, elementId = NULL
@@ -140,8 +167,8 @@ monaco <- function(
   createWidget(
     name = "monaco",
     x,
-    width = width,
-    height = height,
+    width = ifelse(is.null(width), "100%", width),
+    height = ifelse(is.null(height), "calc(100vh - 50px)", height),
     package = "monaco",
     elementId = elementId
   )

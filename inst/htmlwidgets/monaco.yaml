@@ -53,3 +53,7 @@ dependencies:
    src: htmlwidgets/MW
    script: MW.js
    stylesheet: MW.css
+ - name: customRangeInput
+   version: 1.5.2
+   src: htmlwidgets/customRangeInput
+   stylesheet: customRangeInput.css

@@ -24,9 +24,12 @@ HTMLWidgets.widget({
 				});
 
 				if(_MW.prettifiable.indexOf(x.language) > -1) {
+				  $("#checkbox").show();
           editor.addAction(
             _MW.actions.prettifier(x.language, x.tabSize)
           );
+				} else {
+				  $(".monaco").css("top", "10px"); // or do a class and removeClass
 				}
 
       },

@@ -95,6 +95,8 @@ body {
   font-weight: bold;
   margin-left: 5px;
   font-size: small;
+  font-family: cursive;
+  font-style: italic;
 }
 .check-box-container {
   margin-bottom: 10px;
@@ -117,7 +119,7 @@ body {
   cursor: pointer;
   margin-bottom: -1px;
   margin-right: 2px;
-  transform: scale(1.3);
+  transform: scale(1.2);
 }
 .check-box::before, .check-box::after {
   -moz-box-sizing: border-box;
@@ -186,3 +188,4 @@ input[type=checkbox][disabled].check-box-input ~ label {
   opacity: 0.65;
   cursor: not-allowed;
 }
+

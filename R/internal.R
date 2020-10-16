@@ -337,10 +337,12 @@ binaryExtensions <- c(
 #' @importFrom htmltools tags
 #' @noRd
 tinyCheckbox <- function(id, label){
-  tags$div(class = "check-box-container",
-           style = "display: inline-block;",
+  tags$div(id = "checkbox",
+           class = "check-box-container",
+           style = "display: none;",
            tags$input(id = id, type = "checkbox",
-                      class = "check-box-input"),
+                      class = "check-box-input",
+                      checked = ""),
            tags$label(`for` = id, class = "check-box",
                       style = "margin-right: 0;"),
            tags$label(`for` = id,

@@ -9,11 +9,9 @@ ed2 <- monaco(
 )
 
 browsable(
-  tagList(
-    div(
-      div(ed1, style="position:fixed; left:1vw; right: 51vw;"),
-      div(ed2, style="position:fixed; left:51vw; right: 1vw;")
-    )
+  div(
+    div(ed1, style="position: fixed; left: 1vw; right: 51vw;"),
+    div(ed2, style="position: fixed; left: 51vw; right: 1vw;")
   )
 )
 
@@ -29,12 +27,9 @@ browsable(
 #'
 #' if(interactive()){
 #'   browsable(
-#'     tagList(
-#'       tags$style(HTML(".monaco {position: fixed; width: 48vw;}")),
-#'       div(
-#'         div(ed1, style="position:fixed; left:1vw; width: 48vw;"),
-#'         div(ed2, style="position:fixed; left:51vw; width: 48vw;")
-#'       )
+#'     div(
+#'       div(ed1, style="position: fixed; left: 1vw; right: 51vw;"),
+#'       div(ed2, style="position: fixed; left: 51vw; right: 1vw;")
 #'     )
 #'   )
 #' }

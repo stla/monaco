@@ -23,6 +23,20 @@ HTMLWidgets.widget({
           automaticLayout: true
 				});
 
+        _MW.modelValue = editor.getValue();
+
+        editor.addAction(
+            _MW.actions.save(x.fileName)
+        );
+
+        editor.addAction(
+            _MW.actions.bookmark()
+        );
+
+        editor.addAction(
+            _MW.actions.restore()
+        );
+
 				if(_MW.prettifiable.indexOf(x.language) > -1) {
 				  $("#checkbox").show();
           editor.addAction(

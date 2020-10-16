@@ -501,6 +501,57 @@ var _MW = {
   },
   // end of functions
   actions: {
+    save: function (fileName) {
+      return {
+        id: "save",
+        label: "Save",
+        keybindings: [monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_S],
+        precondition: null,
+        keybindingContext: null,
+        contextMenuGroupId: "navigation",
+        contextMenuOrder: 0,
+        run: function (ed) {
+          var a = document.createElement("a");
+          document.body.append(a);
+          a.download = fileName;
+          a.href =
+            "data:text/plain;base64," + _MW.utf8_to_base64(ed.getValue());
+          a.click();
+          a.remove();
+          return null;
+        }
+      };
+    },
+    bookmark: function () {
+      return {
+        id: "bookmark",
+        label: "Bookmark",
+        keybindings: [monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_B],
+        precondition: null,
+        keybindingContext: null,
+        contextMenuGroupId: "navigation",
+        contextMenuOrder: 1.5,
+        run: function (ed) {
+          _MW.modelValue = ed.getValue();
+          return null;
+        }
+      };
+    },
+    restore: function () {
+      return {
+        id: "restore",
+        label: "Restore",
+        keybindings: [monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_R],
+        precondition: null,
+        keybindingContext: null,
+        contextMenuGroupId: "navigation",
+        contextMenuOrder: 1.5,
+        run: function (ed) {
+          ed.setValue(_MW.modelValue);
+          return null;
+        }
+      };
+    },
     prettifier: function (language, tabSize, label) {
       if (typeof label === "undefined") {
         label = "Prettify";

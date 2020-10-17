@@ -13,6 +13,7 @@
 #' @param tabSize number of spaces for the indentation (usually \code{2} or
 #'   \code{4}); if \code{NULL}, it is set to the one used in RStudio
 #' @param fontSize font size in pixels
+#' @param header logical, whether to display the header of the widget
 #' @param width,height dimensions; the default values are nice for usage in
 #'   the RStudio viewer pane
 #' @param elementId a HTML id for the container; this is useless for common
@@ -90,7 +91,7 @@
 #' }
 monaco <- function(
   contents, language = NULL, theme = NULL, tabSize = NULL, fontSize = 14,
-  width = NULL, height = NULL, elementId = NULL
+  header = TRUE, width = NULL, height = NULL, elementId = NULL
 ) {
 
   if(!is.null(language) && !is.element(language, getMonacoLanguages())){
@@ -163,6 +164,7 @@ monaco <- function(
     theme = theme,
     tabSize = tabSize,
     fontSize = fontSize,
+    header = header,
     fileName = fileName,
     fileExtension = ext
   )
@@ -188,9 +190,10 @@ monaco_html <- function(id, style, class, ...){
     class = "monacoWidget",
     tagList(
       tags$div(
-        tags$div(
-          id = paste0("modal", id), class = "modal"
-        ),
+        id = paste0("modal", id), class = "modal"
+      ),
+      tags$div(
+        class = "monacoWidgetHeader",
         tinyCheckbox(
           paste0("checkbox", id), paste0("bookmark", id),
           "Always bookmark before prettifying"
@@ -235,6 +238,74 @@ monaco_html <- function(id, style, class, ...){
 #'     monaco(
 #'       system.file("exampleFiles", "JavaScript.js", package = "monaco")
 #'     )
+#'   })
+#'
+#' }
+#'
+#' if(interactive()){
+#'   shinyApp(ui, server)
+#' }
+#'
+#'
+#' # Customizing the input range, using the 'sass' package ####
+#'
+#' library(monaco)
+#' library(shiny)
+#' library(sass)
+#'
+#' ui <- fluidPage(
+#'
+#'   uiOutput("style"),
+#'
+#'   titlePanel("Customized range input"),
+#'
+#'   fluidRow(
+#'     column(
+#'       width = 4,
+#'       actionButton("sass", "Compile to CSS", class = "btn-primary btn-block")
+#'     ),
+#'     column(
+#'       width = 8,
+#'       tags$input(type = "range", min = 0, max = 10, step = 0.1)
+#'     )
+#'   ),
+#'
+#'   br(),
+#'
+#'   fluidRow(
+#'     column(
+#'       width = 6,
+#'       monacoOutput("scss", height = "75vh")
+#'     ),
+#'     column(
+#'       width = 6,
+#'       monacoOutput("css", height = "75vh")
+#'     )
+#'   )
+#' )
+#'
+#' server <- function(input, output){
+#'
+#'   output[["scss"]] <- renderMonaco({
+#'     monaco(
+#'       system.file(
+#'         "htmlwidgets", "customRangeInput", "customRangeInput.scss",
+#'         package = "monaco"
+#'       ),
+#'       header = FALSE
+#'     )
+#'   })
+#'
+#'   css <- eventReactive(input[["sass"]], {
+#'     sass(input[["scss"]])
+#'   })
+#'
+#'   output[["css"]] <- renderMonaco({
+#'     monaco(css(), language = "css", header = FALSE)
+#'   })
+#'
+#'   output[["style"]] <- renderUI({
+#'     tags$head(tags$style(HTML(input[["css"]])))
 #'   })
 #'
 #' }

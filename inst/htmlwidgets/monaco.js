@@ -20,7 +20,10 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
 
-        $(slctr_fileName).text(x.fileName);
+        if(x.header) {
+          $(".monacoWidgetHeader").show();
+          $(slctr_fileName).text(x.fileName);
+        }
 
         if(x.theme !== "vs-dark" && x.theme !== "vs") {
           monaco.editor.defineTheme(x.theme, _MW.themes[x.theme]);

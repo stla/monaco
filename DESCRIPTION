@@ -52,4 +52,5 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports: htmlwidgets, rstudioapi, tools, htmltools, shiny
+Suggests: sass
 RoxygenNote: 7.1.1

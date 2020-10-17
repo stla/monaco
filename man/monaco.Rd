@@ -10,6 +10,7 @@ monaco(
   theme = NULL,
   tabSize = NULL,
   fontSize = 14,
+  header = TRUE,
   width = NULL,
   height = NULL,
   elementId = NULL
@@ -32,6 +33,8 @@ get the list of available themes}
 \code{4}); if \code{NULL}, it is set to the one used in RStudio}
 
 \item{fontSize}{font size in pixels}
+
+\item{header}{logical, whether to display the header of the widget}
 
 \item{width, height}{dimensions; the default values are nice for usage in
 the RStudio viewer pane}

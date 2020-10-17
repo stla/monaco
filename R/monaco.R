@@ -28,7 +28,7 @@
 #' @examples # in RStudio, `monaco()` opens the current file:
 #' monaco()
 #'
-#' # opens a new JavaScript file:
+#' # opens a new, empty JavaScript file:
 #' monaco(NULL, language = "javascript")
 #'
 #' # opens an existing file:
@@ -36,6 +36,9 @@
 #'
 #' # try the SVG viewer; you can zoom and pan the image:
 #' monaco(system.file("exampleFiles", "react.svg", package = "monaco"))
+#'
+#' # a dirty Markdown file, try to prettify it:
+#' monaco(system.file("exampleFiles", "Markdown.md", package = "monaco"))
 #'
 #'
 #' # opens two editors side-by-side:
@@ -190,7 +193,7 @@ monaco_html <- function(id, style, class, ...){
     class = "monacoWidget",
     tagList(
       tags$div(
-        id = paste0("modal", id), class = "modal"
+        id = paste0("modal", id), class = "modal markdown-body"
       ),
       tags$div(
         class = "monacoWidgetHeader",

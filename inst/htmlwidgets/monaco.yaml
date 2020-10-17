@@ -48,6 +48,10 @@ dependencies:
    version: 1.2.3
    src: htmlwidgets/word-wrap
    script: word-wrap-bundle.js
+ - name: github-markdown-css
+   version: 4.0.0
+   src: htmlwidgets/github-markdown-css
+   stylesheet: github-markdown.css
  - name: monacoWidget
    version: 0.0.0
    src: htmlwidgets/MW

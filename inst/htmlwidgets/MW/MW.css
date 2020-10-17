@@ -51,7 +51,7 @@ span[id^=fileName] {
 
 .modal {
   max-width: 850px;
-  background-color: #c32148;
+  background-color: #f5c8d3;
   overflow: visible;
 }
 
@@ -75,6 +75,8 @@ span[id^=fileName] {
   -moz-box-shadow:    1px 1px 5px rgba(0,0,0,0.5);
   -webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
   box-shadow:         1px 1px 5px rgba(0,0,0,0.5);
+  box-sizing: content-box;
+  font-family: Sans-Serif;
 }
 
 /* tiny checkbox */

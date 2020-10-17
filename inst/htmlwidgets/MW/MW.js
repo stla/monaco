@@ -751,7 +751,8 @@ var _MW = {
         parser: parser,
         plugins: prettierPlugins,
         trailingComma: "none",
-        tabWidth: tabSize
+        tabWidth: tabSize,
+        printWidth: 80
       });
     } catch (err) {
       error = err.message;

@@ -45,7 +45,7 @@ Authors@R: c(
            role = c("ctb", "cph"),
            comment = "'sweetalert2' library")
   )
-Description: A HTML widget rendering the 'Monaco' editor. The 'Monaco' editor is the code editor which powers 'VS Code'. It is particularly well developed for 'JavaScript'. In addition to the 'Monaco' editor features, the widget allows to prettify multiple languages, to view the 'HTML' rendering of 'Markdown', and to view and resize SVG images.
+Description: A HTML widget rendering the 'Monaco' editor. The 'Monaco' editor is the code editor which powers 'VS Code'. It is particularly well developed for 'JavaScript'. In addition to the built-in features of the 'Monaco' editor, the widget allows to prettify multiple languages, to view the 'HTML' rendering of 'Markdown' code, and to view and resize 'SVG' images.
 URL: https://github.com/stla/monaco
 BugReports: https://github.com/stla/monaco/issues
 License: GPL-3

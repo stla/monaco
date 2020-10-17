@@ -215,13 +215,13 @@ monaco_html <- function(id, style, class, ...){
 #' applications and interactive Rmd documents.
 #'
 #' @param outputId output variable to read from
-#' @param width,height CSS measurements (like \code{"100\%"},
-#'   \code{"400px"}, \code{"auto"}) or a number, which will be coerced to a
+#' @param width,height CSS measurements like \code{"100\%"},
+#'   \code{"400px"}, \code{"auto"}, or a number, which will be coerced to a
 #'   string and have \code{"px"} appended
 #' @param expr an expression that creates a Monaco editor with
 #'   \code{\link{monaco}}
 #' @param env the environment in which to evaluate \code{expr}
-#' @param quoted logical, whether \code{expr} a quoted expression
+#' @param quoted logical, whether \code{expr} is a quoted expression
 #'
 #' @name monaco-shiny
 #'

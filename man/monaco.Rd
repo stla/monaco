@@ -17,7 +17,8 @@ monaco(
 }
 \arguments{
 \item{contents}{this can be the path to a file, \code{NULL} to open an
-empty editor, or missing to open the file currently open in RStudio}
+empty editor, missing to open the file currently open in RStudio, or a
+character vector which corresponds to the lines of a file}
 
 \item{language}{the language of the contents; if \code{NULL} and the
 contents are read from a file, the mode is guessed from the extension of

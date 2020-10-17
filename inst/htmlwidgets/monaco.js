@@ -39,6 +39,10 @@ HTMLWidgets.widget({
 
         _MW.modelValue = editor.getValue();
 
+        if(HTMLWidgets.shinyMode) {
+          Shiny.setInputValue(id, editor.getValue());
+        }
+
         editor.addAction(
           _MW.actions.save(x.fileName)
         );
@@ -88,6 +92,9 @@ HTMLWidgets.widget({
         });
 				model.onDidChangeContent(function(event) {
           $(slctr_fileName).css("font-style", "italic");
+          if(HTMLWidgets.shinyMode) {
+            Shiny.setInputValue(id, editor.getValue());
+          }
         });
         _MW.modelState = editor.saveViewState();
 

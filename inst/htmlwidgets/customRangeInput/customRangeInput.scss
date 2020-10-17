@@ -51,7 +51,7 @@ $ie-bottom-track-color: darken($track-color, $contrast) !default;
   width: $thumb-width;
 }
 
-[type='range'] {
+input[type='range'] {
   -webkit-appearance: none;
   background: transparent;
   margin: $thumb-height / 2 0;

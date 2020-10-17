@@ -13,6 +13,10 @@ server <- function(input, output){
     )
   })
 
+  observeEvent(input[["ed"]], {
+    print(input[["ed"]])
+  })
+
 }
 
 shinyApp(ui, server)

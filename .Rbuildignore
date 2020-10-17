@@ -3,3 +3,4 @@
 ^TODO\.txt$
 ^inst/testFiles$
 ^inst/screenshots$
+^cran-comments\.md$

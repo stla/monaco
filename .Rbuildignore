@@ -4,3 +4,4 @@
 ^inst/testFiles$
 ^inst/screenshots$
 ^cran-comments\.md$
+^CRAN-RELEASE$

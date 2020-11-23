@@ -13,8 +13,8 @@ renderMonaco(expr, env = parent.frame(), quoted = FALSE)
 \arguments{
 \item{outputId}{output variable to read from}
 
-\item{width, height}{CSS measurements (like \code{"100\%"},
-\code{"400px"}, \code{"auto"}) or a number, which will be coerced to a
+\item{width, height}{CSS measurements like \code{"100\%"},
+\code{"400px"}, \code{"auto"}, or a number, which will be coerced to a
 string and have \code{"px"} appended}
 
 \item{expr}{an expression that creates a Monaco editor with
@@ -22,7 +22,7 @@ string and have \code{"px"} appended}
 
 \item{env}{the environment in which to evaluate \code{expr}}
 
-\item{quoted}{logical, whether \code{expr} a quoted expression}
+\item{quoted}{logical, whether \code{expr} is a quoted expression}
 }
 \description{
 Output and render functions for using Monaco editors within Shiny

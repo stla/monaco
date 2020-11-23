@@ -49,7 +49,7 @@ Open the Monaco editor.
 # in RStudio, `monaco()` opens the current file:
 monaco()
 
-# opens a new JavaScript file:
+# opens a new, empty JavaScript file:
 monaco(NULL, language = "javascript")
 
 # opens an existing file:
@@ -57,6 +57,9 @@ monaco(system.file("exampleFiles", "JavaScript.js", package = "monaco"))
 
 # try the SVG viewer; you can zoom and pan the image:
 monaco(system.file("exampleFiles", "react.svg", package = "monaco"))
+
+# a dirty Markdown file, try to prettify it:
+monaco(system.file("exampleFiles", "Markdown.md", package = "monaco"))
 
 
 # opens two editors side-by-side:

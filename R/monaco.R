@@ -188,7 +188,7 @@ monaco <- function(
 
 #' @importFrom htmltools tagList tags
 #' @noRd
-monaco_html <- function(id, style, class, ...){
+widget_html.monaco <- function(id, style, class, ...){
   tags$div(
     class = "monacoWidget",
     tagList(

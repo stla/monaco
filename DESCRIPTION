@@ -1,7 +1,7 @@
 Package: monaco
 Type: Package
 Title: The 'Monaco' Editor as a HTML Widget
-Version: 0.2.1
+Version: 0.2.2
 Authors@R: c(
     person(given = "Stéphane",
            family = "Laurent",

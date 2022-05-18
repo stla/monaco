@@ -8,8 +8,6 @@ HTMLWidgets.widget({
 
     if(HTMLWidgets.shinyMode) {
       $(".monacoWidget").addClass("mWidget");
-    } else {
-      $("body").addClass("mWidgetBody");
     }
 
     var id = $(el).attr("id");

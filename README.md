@@ -14,7 +14,7 @@ RStudio viewer pane:
 
 ![](https://raw.githubusercontent.com/stla/monaco/main/inst/screenshots/monacoBrowsable.gif)
 
-The Monaco editor has [many options](https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.ieditoroptions.html). 
+The Monaco editor has [many options](https://microsoft.github.io/monaco-editor/api/interfaces/Window.html). 
 If you would like some of them to be available in the `monaco` package, please 
 fill an issue.
 
